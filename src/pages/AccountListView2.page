@@ -1,0 +1,118 @@
+<apex:page standardController="Account" 
+      tabStyle="account" extensions="AccountListPageController2" sidebar="false" showHeader="false" id="page">
+   <!-- script -->
+      <apex:includeScript value="{!URLFOR($Resource.myResources, 'accountlist2.js')}"/>
+<style type="text/css">
+.loading-icon {
+   background-image: url(/img/loading.gif);
+   width: 16px;
+   height: 16px;
+}
+
+a.alpha-link {
+   font-weight: normal;
+   font-size: 91%;
+   padding: 0 4px;
+   color: #015BA7 !important;
+}
+
+a.alpha-link+a.alpha-link {
+   border-left: 1px solid #CFCECE;
+}
+
+a.alpha-link:hover {
+   background-color: #e0f5fc !important;
+}
+
+a.alpha-select {
+   font-weight: bold;
+   text-decoration: none;
+   background-color: #C6E1FF;
+   color: #000000 !important;
+}
+
+.search-block {
+   text-align: center;
+}
+
+.search-block input {
+   margin: 0px 15px 0px 5px;
+}
+
+.search-block-button {
+   min-width: 110px;
+}
+
+.process-block {
+   text-align: center;
+   margin-top: 10px;
+}
+
+.process-block input {
+   margin: 0px 15px;
+}
+
+.process-block-button {
+   min-width: 110px;
+}
+
+.page-buttons input {
+   min-width: 110px;
+}
+</style>
+      
+        <apex:image url="{!URLFOR($Resource.myResources,
+                  'conference.jpg')}" width="200" height="100"/>
+                 
+        <apex:form id="form">
+        <apex:actionFunction name="buildquery" action="{!BuildQuery}" reRender="panel1,pg1"/>
+        <apex:outputPanel id="panal1">
+        <apex:pageBlock id="pg2" >
+        <apex:pageMessages ></apex:pageMessages>
+        <!-- Search Wizard -->
+                  <apex:panelGrid columns="2"  id="grid1">
+                   <apex:inputText value="{!Search}" id="input1" onkeypress="return notEnter(event)" />  
+                   <apex:commandButton id="search" value="Search" action="{!searchList}" reRender="panal1,contact_table"/>
+         </apex:panelGrid>
+        <!-- Search Wizard -->
+        <!-- Alphabatic Search -->
+        <div> <span style="float: right; margin: 5px 5px 5px 5px;"> 
+                  <apex:repeat value="{!AlphaList}" var="a">
+                  <apex:commandLink value="{!a}"  action="{!BuildQuery}" rerender="TablePanel" reRender="panal1"
+                     styleClass="alpha-link{!if(AlphaFilter=a,' alpha-select','')}" status="TableUpdateStatus">
+                     <apex:param name="AlphaFilter" value="{!a}" assignTo="{!AlphaFilter}" />
+                  </apex:commandLink>
+               </apex:repeat>
+            </span>
+         </div>
+        <!--Alphabatic Search -->
+         <apex:pageBlockTable value="{!listAccount}" var="acc" id="contact_table" >
+                <apex:column headerValue="Account Name">
+                <apex:outputLink title="Delete" onclick="return deleteSelectedAccount('{!acc.Id}','{!acc.Name}');">Delete</apex:outputLink>&nbsp;&nbsp;&nbsp;&nbsp;
+                <apex:commandLink title="{!acc.Name}" action="{!gotoAccount}" > {!acc.Name} 
+                  <apex:param name="accountid" value="{!acc.Id}" assignTo="{!accountId}" />
+                </apex:CommandLink>
+                
+                </apex:column>
+                <apex:column headerValue="Email Address">
+                    <apex:OutputField value="{!acc.Email_Address__c}"/>
+                </apex:column>
+                <apex:column headerValue="Phone Number">
+                    <apex:outputField value="{!acc.Phone}"/>
+                </apex:column>
+                <apex:column headerValue="WebSite">
+                    <apex:outputField value="{!acc.Website}"/>
+                </apex:column>
+                <apex:column headerValue="Manage Contact" id="commandbutton">
+                   <apex:commandButton value="Manage Contact" title="Manage Contact" action="{!manageContact}" reRender="commandbutton">
+                    
+                    <apex:param name="accountid" value="{!acc.Id}" assignTo="{!accountId}" />
+                    
+                   </apex:commandButton>
+                </apex:column>
+                
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        </apex:outputPanel>
+      </apex:form>
+</apex:page>

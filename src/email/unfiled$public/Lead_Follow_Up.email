@@ -1,0 +1,9 @@
+Hi {!Lead.OwnerFullName}
+
+Lead: {!Lead.Name  Details are below 
+
+Created Date :{!Lead.CreatedDate}
+Follow UpDate :{!Lead.Follow_Up__c}
+
+For More Detail Please Click on below Link
+{!Lead.Link}

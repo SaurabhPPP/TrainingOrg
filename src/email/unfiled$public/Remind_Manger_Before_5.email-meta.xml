@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Remind Manger Before  5</name>
+    <style>none</style>
+    <subject>Project {!Project_Details__c.Name} is Ending in 5 Days</subject>
+    <type>text</type>
+</EmailTemplate>

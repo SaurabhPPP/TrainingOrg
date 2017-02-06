@@ -1,0 +1,5 @@
+HI {!EMPLOYEE__c.Manager_Email__c}
+
+Employee {!EMPLOYEE__c.First_Name__c} is Deactivated 
+
+Thanks

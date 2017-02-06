@@ -1,0 +1,80 @@
+<apex:page standardController="Account" extensions="ManageAccountController">
+
+<!--script if any -->
+<apex:includeScript value="{!URLFOR($Resource.myResources, 'manageaccountpage.js')}"/>
+<!--script if any -->
+
+<!-- Form Started  -->
+<apex:form >
+<!-- Page Message -->
+<apex:pageBlock >
+<apex:pageMessages id="showmsg"></apex:pageMessages>
+</apex:pageBlock>
+<!-- Page Message -->
+
+<!-- Account Deatil -->
+<apex:pageBlock id="accountdetail" title="Account Detail">
+<apex:pageblockButtons >
+<apex:commandButton action="{!openWizard}" value="Edit" title="Edit" />
+</apex:pageblockButtons>
+<apex:pageBlockSection >
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="{!$ObjectType.Account.fields.Name.Label}" />
+<apex:outputField value="{!acc.Name}"/>
+</apex:pageBlockSectionItem>
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="{!$ObjectType.Account.fields.BillingCity.Label}" />
+<apex:outputField value="{!acc.BillingCity }"/>
+</apex:pageBlockSectionItem>
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="{!$ObjectType.Account.fields.Phone.Label}" />
+<apex:outputField value="{!acc.Phone}"/>
+</apex:pageBlockSectionItem>
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="{!$ObjectType.Account.fields.Email_Address__c.Label}" />
+<apex:outputField value="{!acc.Email_Address__c}"/>
+</apex:pageBlockSectionItem>
+
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="{!$ObjectType.Account.fields.Rating.Label}" />
+<apex:outputField value="{!acc.Rating}"/>
+</apex:pageBlockSectionItem>
+
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="{!$ObjectType.Account.fields.Type.Label}" />
+<apex:outputField value="{!acc.Type}"/>
+</apex:pageBlockSectionItem>
+
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="{!$ObjectType.Account.fields.BillingCity.Label}" />
+<apex:outputField value="{!acc.BillingCity }"/>
+</apex:pageBlockSectionItem>
+
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="{!$ObjectType.Account.fields.BillingCity.Label}" />
+<apex:outputField value="{!acc.BillingCity }"/>
+</apex:pageBlockSectionItem>
+
+</apex:pageBlockSection>
+</apex:pageBlock>
+
+<!-- Account Detail -->
+
+<!--Attachment Deatil -->
+<apex:pageBlock title="Account Attachment" >
+<apex:pageBlockTable value="{!listAttachment}" var="attach">
+
+<apex:column title="Name" headerValue="Name">
+<button  onclick="deleteit('{!attach.Id}','{!attach.Name}');">Delete</button>
+<apex:outputfield value="{!attach.Name}"/>
+</apex:column>
+</apex:pageBlockTable>
+
+</apex:pageBlock>
+<!--Attachment Detail -->
+
+<!--Buttons -->
+<!--Buttons -->
+</apex:form>
+<!-- Form End -->
+</apex:page>

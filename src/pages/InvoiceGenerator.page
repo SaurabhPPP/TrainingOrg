@@ -1,0 +1,54 @@
+<apex:page standardController="Invoice__c" extensions="InvoiceGeneratorController" sidebar="false" >
+  <apex:form >
+  <apex:pageBlock >
+  <apex:pagemessages ></apex:pagemessages>
+  <apex:outputPanel >
+  <apex:outputText value="Invoice Generator"></apex:outputText>
+  </apex:outputPanel>
+  </apex:pageBlock>
+  
+  <apex:pageblock >
+  <apex:pageBlockSection >
+   <apex:pageBlockSectionItem >
+   <apex:outputLabel value="Select {!$ObjectType.Invoice__c.fields.Company__c.Label}" />
+   <apex:inputField value="{!Invoice__c.Company__c}"/>
+  </apex:pageBlockSectionItem>
+  
+  <apex:pageBlockSectionItem >
+   <apex:outputLabel value="Select {!$ObjectType.Invoice__c.fields.Bill_To_Customer__c.Label}" />
+   <apex:inputField value="{!Invoice__c.Bill_To_Customer__c}"/>
+  </apex:pageBlockSectionItem>
+  
+  <apex:pageBlockSectionItem >
+   <apex:outputLabel value="Select {!$ObjectType.Invoice__c.fields.Service_Fee__c.Label}" />
+   <apex:inputField value="{!Invoice__c.Service_Fee__c}"/>
+  </apex:pageBlockSectionItem>
+  
+  <apex:pageBlockSectionItem >
+   <apex:outputLabel value="Select {!$ObjectType.Invoice__c.fields.Labor_Charge_Hour__c.Label}" />
+   <apex:inputField value="{!Invoice__c.Labor_Charge_Hour__c}"/>
+  </apex:pageBlockSectionItem>
+  
+  <apex:pageBlockSectionItem >
+   <apex:outputLabel value="Select {!$ObjectType.Invoice__c.fields.No_of_Hours_worked__c.Label}" />
+   <apex:inputField value="{!Invoice__c.No_of_Hours_worked__c}"/>
+  </apex:pageBlockSectionItem>
+  
+  <apex:pageBlockSectionItem >
+   <apex:outputLabel value="Select {!$ObjectType.Invoice__c.fields.Tax_Percentage__c.Label}" />
+   <apex:inputField value="{!Invoice__c.Tax_Percentage__c}"/>
+  </apex:pageBlockSectionItem>
+  
+  <apex:pageBlockSectionItem >
+   <apex:outputLabel value="Select {!$ObjectType.Invoice__c.fields.Discount__c.Label}" />
+   <apex:inputField value="{!Invoice__c.Discount__c}"/>
+  </apex:pageBlockSectionItem>
+  </apex:pageBlockSection>
+  
+  <apex:pageblockButtons >
+  <apex:commandButton action="{!saveIt}" value="Generate Invoice"/>
+  
+  </apex:pageblockButtons>
+  </apex:pageblock>
+  </apex:form>
+</apex:page>

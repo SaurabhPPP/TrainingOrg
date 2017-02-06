@@ -1,0 +1,45 @@
+<apex:page standardController="Account" extensions="AccountListviewController" recordSetVar="accounts" 
+              tabStyle="Account"
+    sidebar="false" id="page" >
+    
+    <link rel="shortcut icon" href="{!URLFOR($Resource.myResources, 'favicon.ico')}" type="image/x-icon"/>
+    <!-- javascript if any -->
+     <apex:includeScript value="{!URLFOR($Resource.myResources, 'accountlist.js')}"/>
+
+    <!-- javascript if any -->
+    <apex:form id="form">
+        <apex:pageBlock id="pg1" >
+           
+            <apex:pageBlock id="pg2" >
+             <apex:pageMessages id="msg" />
+                <apex:panelGrid columns="2" >
+                    <apex:outputLabel value="View:"/>
+                    <apex:selectList value="{!filterId}" size="1">
+                        <apex:actionSupport event="onchange" action="{!filterList}" rerender="acc_table"/>
+                        <apex:selectOptions value="{!listviewoptions}"/>
+                    </apex:selectList>
+                    
+                </apex:panelGrid>
+                  <apex:panelGrid columns="2"  id="grid2">
+                   <apex:inputText value="{!Search}" id="input1" onkeypress="return notEnter(event)" />  
+                     <apex:commandButton id="search" value="Search" action="{!searchList}" reRender="acc_table,msg"/>
+                </apex:panelGrid>
+            </apex:pageBlock>
+
+            
+            <apex:pageBlockTable value="{!myaccounts}" var="acc" id="acc_table" >
+                <apex:column headerValue="Name">
+                    <apex:commandLink title="{!acc.Name}" action="{!gotoAccount}" > {!acc.Name} 
+                  <apex:param name="accountid" value="{!acc.Id}" assignTo="{!accountId}" />
+                </apex:CommandLink>
+                </apex:column>
+                <apex:column headerValue="Phone">
+                    <apex:outputField value="{!acc.Phone}"/>
+                </apex:column>
+                <apex:column headerValue="Email Address">
+                    <apex:OutputField value="{!acc.Email_Address__c}"/>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,78 @@
+<apex:page language="{!selectedLanguage}" standardController="Student__c" extensions="MultiLanguageController" sidebar="false" showHeader="false" id="page">
+  <script>
+    var onchangeLang=  function(){
+        changeLanguage();  
+        return false;
+        
+        }
+    </script>
+ <apex:form >
+ <apex:outputPanel id="panel1">
+ <apex:pageblock >
+ <apex:pagemessages rendered="{!showMessage}"></apex:pagemessages>
+ <apex:actionFunction name="changeLanguage" rerender="panel2,panel1"/>
+ <apex:actionFunction name="submit" action="{!submit}" rerender="panel1"/>
+ <center><b> <apex:outputLabel value="{!$Label.Student_Form}" rendered="{!!showMessage}"></apex:outputLabel></b></center>
+ <apex:outputLabel value="Select Language" rendered="{!!showMessage}"></apex:outputLabel>&nbsp;&nbsp;
+ <apex:selectList size="1" onchange="return onchangeLang();"  value="{!selectedLanguage}" rendered="{!!showMessage}" >
+ <apex:SelectOptions value="{!listLanguage}"></apex:SelectOptions>
+ </apex:selectList>
+ </apex:pageblock>
+ </apex:outputPanel>
+ <apex:outputPanel id="panel2" rendered="{!!showMessage}">
+ <apex:pageBlock rendered="{!!showMessage}" >
+ <apex:pageblockSection >
+ <apex:pageBlockSectionItem >
+ <apex:outputLabel value="{!$Label.Student_Name}" rendered="true" />
+ <apex:inputField value="{!Student__c.Student_Name__c}"/>
+ </apex:pageBlockSectionItem>
+  <apex:pageBlockSectionItem >
+    <apex:outputLabel value="{!$Label.Roll_Number}" rendered="true" />
+ <apex:inputField value="{!Student__c.Roll_Number__c}"/>
+ </apex:pageBlockSectionItem>
+ 
+ <apex:pageBlockSectionItem >
+ <apex:outputLabel value="{!$Label.Gender}" rendered="true" />
+ <apex:inputField value="{!Student__c.Gender__c}"/>
+ </apex:pageBlockSectionItem>
+  
+  <apex:pageBlockSectionItem >
+  <apex:outputLabel value="{!$Label.HSC}" rendered="true" />
+ <apex:inputField value="{!Student__c.HSC__c}"/>
+ </apex:pageBlockSectionItem>
+ 
+  <apex:pageBlockSectionItem >
+  <apex:outputLabel value="{!$Label.SSC}" rendered="true" />
+ <apex:inputField value="{!Student__c.S_S_C__c}"/>
+ </apex:pageBlockSectionItem>
+ 
+  <apex:pageBlockSectionItem >
+  <apex:outputLabel value="{!$Label.Course}" rendered="true" />
+ <apex:inputField value="{!Student__c.Course__c}"/>
+ </apex:pageBlockSectionItem>
+ 
+ <apex:pageBlockSectionItem >
+  <apex:outputLabel value="{!$Label.Country}" rendered="true" />
+ <apex:inputField value="{!Student__c.Country__c}"/>
+ </apex:pageBlockSectionItem>
+ 
+ <apex:pageBlockSectionItem >
+  <apex:outputLabel value="{!$Label.State}" rendered="true" />
+ <apex:inputField value="{!Student__c.State__c}"/>
+ </apex:pageBlockSectionItem>
+ 
+ <apex:pageBlockSectionItem >
+  <apex:outputLabel value="{!$Label.City}" rendered="true" />
+ <apex:inputField value="{!Student__c.City__c}"/>
+ </apex:pageBlockSectionItem>
+  
+  </apex:pageblockSection>
+ 
+ 
+ <apex:pageBlockButtons >
+ <apex:commandButton value="{!$Label.Submit}" action="{!submit}" title="Submit"/>
+ </apex:pageBlockButtons>
+ </apex:pageBlock>
+ </apex:outputPanel>
+ </apex:form>
+</apex:page>

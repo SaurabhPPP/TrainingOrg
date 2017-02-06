@@ -1,0 +1,100 @@
+<apex:page standardController="Account" 
+      tabStyle="account" extensions="AccountDetailPageController" sidebar="false" showHeader="false" >
+   
+<style type="text/css">
+.loading-icon {
+   background-image: url(/img/loading.gif);
+   width: 16px;
+   height: 16px;
+}
+
+a.alpha-link {
+   font-weight: normal;
+   font-size: 91%;
+   padding: 0 4px;
+   color: #015BA7 !important;
+}
+
+a.alpha-link+a.alpha-link {
+   border-left: 1px solid #CFCECE;
+}
+
+a.alpha-link:hover {
+   background-color: #e0f5fc !important;
+}
+
+a.alpha-select {
+   font-weight: bold;
+   text-decoration: none;
+   background-color: #C6E1FF;
+   color: #000000 !important;
+}
+
+.search-block {
+   text-align: center;
+}
+
+.search-block input {
+   margin: 0px 15px 0px 5px;
+}
+
+.search-block-button {
+   min-width: 110px;
+}
+
+.process-block {
+   text-align: center;
+   margin-top: 10px;
+}
+
+.process-block input {
+   margin: 0px 15px;
+}
+
+.process-block-button {
+   min-width: 110px;
+}
+
+.page-buttons input {
+   min-width: 110px;
+}
+</style>
+      <!-- script -->
+      <apex:includeScript value="{!URLFOR($Resource.myResources, 'accountdetailpage.js')}"/>
+      
+        <apex:image url="{!URLFOR($Resource.myResources,
+                  'conference.jpg')}" width="200" height="100"/>
+        <apex:form >
+        <apex:actionFunction name="buildquery" action="{!BuildQuery}" reRender="panel1,pg1"/>
+        <apex:pageBlock id="pg1" rendered="{!showdetail}">
+        <apex:detail relatedList="false" title="true"/>
+        </apex:pageBlock>
+        <apex:outputPanel id="panal1">
+        <apex:pageBlock id="pg2" rendered="{!showrelated}">
+        <!-- Alphabatic Search -->
+        <div> <span style="float: right; margin: 5px 5px 5px 5px;"> 
+                  <apex:repeat value="{!AlphaList}" var="a">
+                  <apex:commandLink value="{!a}"  action="{!BuildQuery}" rerender="TablePanel" reRender="panal1"
+                     styleClass="alpha-link{!if(AlphaFilter=a,' alpha-select','')}" status="TableUpdateStatus">
+                     <apex:param name="AlphaFilter" value="{!a}" assignTo="{!AlphaFilter}" />
+                  </apex:commandLink>
+               </apex:repeat>
+            </span>
+         </div>
+        <!--Alphabatic Search -->
+         <apex:pageBlockTable value="{!listcontacts}" var="contact" id="contact_table" >
+                <apex:column headerValue="Name">
+                <apex:outputLink title="Delete" onclick="return deleteSelectedContact('{!contact.Id}','{!contact.Name}');">Delete</apex:outputLink>&nbsp;
+                <apex:outputField value="{!contact.Name}"/>
+                </apex:column>
+                <apex:column headerValue="Phone">
+                    <apex:outputField value="{!contact.Phone}"/>
+                </apex:column>
+                <apex:column headerValue="Email Address">
+                    <apex:OutputField value="{!contact.Email}"/>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        </apex:outputPanel>
+      </apex:form>
+</apex:page>

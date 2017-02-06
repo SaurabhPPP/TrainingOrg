@@ -1,0 +1,118 @@
+<apex:page standardController="Invoice__c" showHeader="FALSE" standardStylesheets="false" renderas="pdf" extensions="InvoiceGeneratorController">
+
+<head>
+<style type="text/css">
+@page{
+    size: letter;
+    margin: 10%;
+    @top-center {
+        content: "Invoice Date: {!MONTH(TODAY())}/{!DAY(TODAY())}/{!YEAR(TODAY())}";
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 12p
+            font-weight: bolder;
+    }
+    @top-right {
+        content: "Invoice #: {!invoice.Name}";
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        font-weight: bolder;
+    }
+    @top-left {
+        content: "INVOICE";
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        font-weight: bolder;
+    }
+    @bottom-left {
+        content: "";
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 10px;
+    }
+    @bottom-right {
+        content: "Page " counter(page) " of " counter(pages);
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 10px;
+    }
+}
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 11px;
+}
+table {
+    font-family: Helvetica, Arial, sans-serif;  
+}
+td {
+    border: 1px solid #000000;  
+}
+.tablelabel {
+    background: #000000;
+    color: #FFFFFF;
+    padding: 5px;
+    font-weight: bolder;
+}
+.tableheader {
+    font-weight: bolder;
+}
+.invisiblecell {
+    border-left: 0;
+    border-bottom: 0;
+    border-top: 0;
+}
+span#warningtext{
+    font-size: 80%;
+    background: #FFF000;
+    float: left;
+    padding: 3px;
+    margin-right: 8px;
+    width: 90px;
+    align: middle;
+    text-align: right;
+}
+
+</style>
+</head>
+
+<p><strong>Billed To:</strong></p>
+<p>{!invoice.Name}<br/>
+<apex:outputText value="{! IF(ISBLANK(invoice.Company__r.BillingStreet),"", invoice.Company__r.BillingStreet &"<br/>")}" escape="false"/>
+{!invoice.Company__r.BillingCity}, {!invoice.Company__r.BillingState} {!invoice.Company__r.BillingPostalCode}<br/>
+{!invoice.Company__r.BillingCountry}
+</p>
+
+<!-- OUTPUT ORDERED ITEMS TABLE -->
+<table class="tables" cellpadding="6" cellspacing="0" width="100%">
+<tr><td colspan="5" class="tablelabel">Order</td></tr>
+<tr class="tableheader"><td>Item Description</td><td align="right">List Price</td><td align="right">Sale Price</td><td align="center">Quantity</td><td align="right">Amount</td></tr>
+<tr>
+</tr>
+
+
+<tr>
+<td align="left" width="50%">{!invoice.Service_Fee__c}</td></tr><tr>
+<td align="right"><apex:outputfield value="{!invoice.No_of_Hours_worked__c}" /></td></tr><tr>
+<td align="right"><apex:outputfield value="{!invoice.Labor_Charge_Hour__c}" /></td></tr><tr>
+<td align="center">{!invoice.Discount__c}</td></tr><tr>
+<td align="right"><apex:outputfield value="{!invoice.Tax_Percentage__c}" /></td>
+</tr>
+
+<tr><td class="invisiblecell"></td><td colspan="3" class="tablelabel">Order Total</td><td class="tablelabel" align="right"></td></tr>
+</table>
+
+<p>&nbsp;</p>
+<p><strong>To Pay by Credit Card</strong><br/>
+We are available to take credit card payments over the phone between 8am and 5pm ET at XXX-XXX-XXXX.</p>
+
+<p>
+<strong>To Pay by Check</strong> <br/>
+Make checks payable to “XXXXX”, include a memo that the amount is for "XXXXX" and mail to:</p>
+
+
+<p><span id="warningtext">Please note our<br />new address<br />for payments</span>AASHE<br />
+PO Box XXXXXXX<br />
+Philadelphia, PA XXXXXX 
+</p>
+
+<p><strong><em>Thank you!</em></strong>
+</p>
+
+</apex:page>

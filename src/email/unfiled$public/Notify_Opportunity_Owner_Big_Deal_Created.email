@@ -1,0 +1,9 @@
+Hi {!Opportunity.OwnerFullName}
+
+Opportunity : {!Opportunity.Name} Details are below 
+
+Stage :- {!Opportunity.StageName}
+Amount :-  {!Opportunity.Amount} 
+
+For More Detail Please Click on below Link
+{!Opportunity.Link}

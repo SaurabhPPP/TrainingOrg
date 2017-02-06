@@ -1,0 +1,84 @@
+<apex:page standardController="Account" extensions="ManageAccountController">
+<script type ="text/javascript">
+var callnextpage = function(){
+nextpage();
+return false;
+}
+</script>
+<!-- Form Started  -->
+<apex:form >
+<apex:pageBlock >
+<apex:pageMessages id="showmsg"></apex:pageMessages>
+</apex:pageBlock>
+<apex:actionFunction name="nextpage" action="{!nextpage}" reRender="panel1,panel2,lb1"/>
+<!-- Account Deatil -->
+<apex:outputPanel id="panel1">
+<apex:pageBlock id="accountdetail" title="Account Edit" rendered="{!pageController == 'detail'}"  >
+<apex:pageblockButtons >
+<apex:commandButton value="Next" title="Next" onclick="return callnextpage();" />
+</apex:pageblockButtons>
+<apex:pageBlockSection >
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="{!$ObjectType.Account.fields.Name.Label}" />
+<apex:inputField value="{!acc.Name}"/>
+</apex:pageBlockSectionItem>
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="{!$ObjectType.Account.fields.BillingCity.Label}" />
+<apex:inputField value="{!acc.BillingCity }"/>
+</apex:pageBlockSectionItem>
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="{!$ObjectType.Account.fields.Phone.Label}" />
+<apex:inputField value="{!acc.Phone}"/>
+</apex:pageBlockSectionItem>
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="{!$ObjectType.Account.fields.Email_Address__c.Label}" />
+<apex:inputField value="{!acc.Email_Address__c}"/>
+</apex:pageBlockSectionItem>
+
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="{!$ObjectType.Account.fields.Rating.Label}" />
+<apex:inputField value="{!acc.Rating}"/>
+</apex:pageBlockSectionItem>
+
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="{!$ObjectType.Account.fields.Type.Label}" />
+<apex:inputField value="{!acc.Type}"/>
+</apex:pageBlockSectionItem>
+
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="{!$ObjectType.Account.fields.BillingCity.Label}" />
+<apex:inputField value="{!acc.BillingCity }"/>
+</apex:pageBlockSectionItem>
+
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="{!$ObjectType.Account.fields.BillingCity.Label}" />
+<apex:inputField value="{!acc.BillingCity }"/>
+</apex:pageBlockSectionItem>
+
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:outputPanel>
+<!-- Account Detail -->
+
+<!--Attachment Upload -->
+<apex:outputPanel id="panel2">
+<apex:pageBlock title="Account Attachment" id="pgblc2" rendered="{!pageController == 'upload'}"  >
+<apex:pageblockButtons >
+<apex:commandButton value="Save" title="Save" action="{!saveAccountWithAttachment}"/>
+</apex:pageblockButtons>
+
+<apex:pageBlockSection >
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="Browse File From Window"></apex:outputLabel>
+<apex:inputFile value="{!attachmentdata}" title="File" ></apex:inputFile>
+</apex:pageBlockSectionItem>
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:outputPanel>
+<!--Attachment Upload-->
+
+<!--Buttons -->
+<!--Buttons -->
+</apex:form>
+<!-- Form End -->
+</apex:page>

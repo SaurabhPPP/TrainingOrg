@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Invoice</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Invoices</value>
+    </caseValues>
+    <fields>
+        <label><!-- Bill To Customer --></label>
+        <name>Bill_To_Customer__c</name>
+        <relationshipLabel><!-- Invoices --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Company --></label>
+        <name>Company__c</name>
+        <relationshipLabel><!-- Invoices --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Discount --></label>
+        <name>Discount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Labor Charge/Hour --></label>
+        <name>Labor_Charge_Hour__c</name>
+    </fields>
+    <fields>
+        <label><!-- No of Hours(worked) --></label>
+        <name>No_of_Hours_worked__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Fee --></label>
+        <name>Service_Fee__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tax Percentage --></label>
+        <name>Tax_Percentage__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

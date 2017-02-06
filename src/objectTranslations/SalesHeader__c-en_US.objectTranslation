@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>SalesHeader</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>SalesHeaders</value>
+    </caseValues>
+    <fields>
+        <label><!-- Bill To Company --></label>
+        <name>Bill_To_Company__c</name>
+        <relationshipLabel><!-- SalesHeaders --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Bill To Customer --></label>
+        <name>Bill_To_Customer__c</name>
+        <relationshipLabel><!-- SalesHeaders --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Close</masterLabel>
+            <translation><!-- Close --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open</masterLabel>
+            <translation><!-- Open --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

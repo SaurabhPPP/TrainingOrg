@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>EFT Transaction Status</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>EFTs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Method Name --></label>
+        <name>Method_Name__c</name>
+        <picklistValues>
+            <masterLabel>COD</masterLabel>
+            <translation><!-- COD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Credit Card Address Verify</masterLabel>
+            <translation><!-- Credit Card Address Verify --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Debit Card Address Verify</masterLabel>
+            <translation><!-- Debit Card Address Verify --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- SalesHeaderStatus --></label>
+        <name>SalesHeaderStatus__c</name>
+    </fields>
+    <fields>
+        <label><!-- SalesHeader --></label>
+        <name>SalesHeader__c</name>
+        <relationshipLabel><!-- EFTs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Transaction Date --></label>
+        <name>Transaction_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Transaction Status --></label>
+        <name>Transaction_Status__c</name>
+        <picklistValues>
+            <masterLabel>Accepted</masterLabel>
+            <translation><!-- Accepted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Declined</masterLabel>
+            <translation><!-- Declined --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

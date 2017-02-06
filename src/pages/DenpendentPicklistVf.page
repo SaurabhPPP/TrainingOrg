@@ -1,0 +1,23 @@
+<apex:page Controller="DependentPicklistController" id="page">
+<apex:form >
+<apex:pageblock >
+<apex:actionFunction name="selectCity" action="{!findListCity}" reRender="cityPanel"/>
+<apex:pageblockSection >
+<apex:outputLabel value="Select Country :"></apex:outputLabel>
+<apex:selectList value="{!selectedIso}" size="1" onchange="selectCity();">
+              <apex:selectOptions value="{!isoCodes}"/>
+          </apex:selectList>
+</apex:pageblockSection>
+<apex:outputPanel id="cityPanel">
+<apex:pageblockSection >
+<apex:outputLabel value="Select City:"></apex:outputLabel>
+<apex:selectList size="1" >
+<apex:selectoptions value="{!listCity}">
+</apex:selectoptions>
+</apex:selectList>
+</apex:pageblockSection>
+</apex:outputPanel>
+</apex:pageblock>
+</apex:form>
+  
+</apex:page>

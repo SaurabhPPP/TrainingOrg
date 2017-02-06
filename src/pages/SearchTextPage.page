@@ -1,0 +1,32 @@
+<apex:page sidebar="false" id="page" controller="SearchTextController">
+<apex:form id="form">
+
+<!-- Input Search Section -->
+<apex:pageBlock id="pglc1">
+<apex:pageBlockSection >
+<apex:pageblockSectionItem >
+<apex:outputLabel value="Enter the Search Text" ></apex:outputLabel>
+<apex:InputText value="{!searchText}" />
+</apex:pageblockSectionItem>
+</apex:pageBlockSection>
+<apex:pageblockButtons id="pgbtn">
+<apex:commandButton value="Search" action="{!searchInputText}"/>
+</apex:pageblockButtons>
+</apex:pageBlock>
+<!-- Input Search Section -->
+
+<!-- Diplay Result in Various Section table -->
+<apex:pageBlock id="pglc2">
+<apex:repeat value="{!serachResultmap}" var="sobj">
+<apex:outputLabel value="{!sobj}"></apex:outputLabel>
+<apex:pageblockTable value="{!serachResultmap[sobj]}" var="record" >
+<apex:column value="{!record['Name']}"/>
+<apex:column value="{!record['Id']}" headerValue="ID"/>
+</apex:pageblockTable>
+<br/><br/>
+</apex:repeat>
+
+</apex:pageBlock>
+<!-- Diplay Result in Various Section table -->
+</apex:form>  
+</apex:page>

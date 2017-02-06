@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>City</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>City</shortDescription>
+        <value>City</value>
+    </labels>
+    <labels>
+        <fullName>Country</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Country</shortDescription>
+        <value>Country</value>
+    </labels>
+    <labels>
+        <fullName>Course</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Course</shortDescription>
+        <value>Course</value>
+    </labels>
+    <labels>
+        <fullName>Gender</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Gender</shortDescription>
+        <value>Gender</value>
+    </labels>
+    <labels>
+        <fullName>HSC</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>HSC</shortDescription>
+        <value>HSC %</value>
+    </labels>
+    <labels>
+        <fullName>Roll_Number</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Roll Number</shortDescription>
+        <value>Roll Number</value>
+    </labels>
+    <labels>
+        <fullName>SSC</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SSC</shortDescription>
+        <value>SSC %</value>
+    </labels>
+    <labels>
+        <fullName>State</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>State</shortDescription>
+        <value>State</value>
+    </labels>
+    <labels>
+        <fullName>Student_Form</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Student Form</shortDescription>
+        <value>Student Registration Form</value>
+    </labels>
+    <labels>
+        <fullName>Student_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Student Name</shortDescription>
+        <value>Student Name</value>
+    </labels>
+    <labels>
+        <fullName>Submit</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Submit</shortDescription>
+        <value>Submit</value>
+    </labels>
+    <labels>
+        <fullName>Success_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Success Message</shortDescription>
+        <value>Your Admission application has been Submitted Successfully:</value>
+    </labels>
+</CustomLabels>
