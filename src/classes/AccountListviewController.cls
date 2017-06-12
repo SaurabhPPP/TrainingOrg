@@ -41,7 +41,9 @@ public class AccountListviewController {
         String accid = ApexPages.currentPage().getParameters().get('accountId');
         System.debug('accid'+accid);
         if(accid != null || accid !='')
-         pg = new PageReference('/apex/AccountDetailPage?id='+accid);       
+         pg = new PageReference('/apex/AccountDetailPage?id='+accid);     
+  //test
+  
         return pg;   
     }
 }
