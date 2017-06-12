@@ -36,6 +36,13 @@
         <value>HSC %</value>
     </labels>
     <labels>
+        <fullName>LeadDublicateField</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>LeadDublicateField</shortDescription>
+        <value>Email</value>
+    </labels>
+    <labels>
         <fullName>Roll_Number</fullName>
         <language>en_US</language>
         <protected>true</protected>

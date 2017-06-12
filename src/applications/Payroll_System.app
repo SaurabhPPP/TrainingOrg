@@ -7,4 +7,5 @@
     <tab>Client__c</tab>
     <tab>Project_Details__c</tab>
     <tab>Role__c</tab>
+    <tab>GenericSobjectCreator__c</tab>
 </CustomApplication>

@@ -1,0 +1,240 @@
+<apex:page controller="DataCleanerController" id="pg"  >
+
+<apex:includeScript value="{!URLFOR($Resource.ext,'/ext-4.2.1.883/examples/shared/include-ext.js')}"/>
+
+<script type = "text/javascript">
+Ext.require([ 'Ext.form.*',
+'Ext.grid.*',
+'Ext.data.*',
+'Ext.util.*',
+'Ext.toolbar.Paging',
+'Ext.ux.PreviewPlugin', 
+'Ext.ModelManager',
+'Ext.tip.QuickTipManager'
+]);
+   
+Ext.ns("Ext.search");
+
+var DataCleaner_selectedfield = [];
+
+function selectfield(selectedf){
+ DataCleaner_selectedfield.push(selectedf); 
+}
+
+//function for HyperLink render to detail page 
+function renderTopic(value, p, record) {
+                             return Ext.String.format(
+                            '<a href="https://c.ap4.visual.force.com/{1}" target="_blank">{0}</a>',
+                            value,record.get('Id')
+                            
+                        );
+    };
+    
+function searchSobject()
+{
+        //query String to be formed as per selection filter
+        var QueryObj ='Select ';
+        
+        Ext.tip.QuickTipManager.init();
+        document.getElementById('search1').innerHTML = '';
+        //condition filter on sobject record
+        var conditions_js = document.getElementById('{!$Component.pg.form1.pg1.sec3}').innerHTML;
+        //limits on record
+        var limit_js = document.getElementById('{!$Component.pg.form1.pg1.sec4.sel5}').value;
+        //all selected fields 
+        var selectedfieldVar= document.getElementById('{!$Component.pg.form1.pg1.sec2.sel2}');
+        //object name on which query to be made
+        var objname = document.getElementById('{!$Component.pg.form1.pg1.sec1.sel1}').value;
+        //array varaible to be hold all selected fields
+        var selectedfields= [];
+        var options = selectedfieldVar&& selectedfieldVar.options;
+        var opt;
+         
+        for (var i=0, iLen=options.length; i<iLen; i++) {
+                opt = options[i];
+            
+                if (opt.selected) {
+                   QueryObj = QueryObj + opt.value+',';
+                  selectedfields.push(opt.value || opt.text);
+                }
+         }
+        QueryObj = QueryObj.slice(0, QueryObj.length-1) +' From '+objname +' Limit '+limit_js ;
+        
+        
+        //dynamic field on EXTjs data model
+        var myfields = [];
+        //dynamic columns on extjs data panel
+        var myColumns = [];
+        
+        //adding hyperlink column to be render to detail page
+        myColumns.push(Ext.create('Ext.grid.Column',{
+               
+               text : 'Name',
+               dataIndex   : 'Name',
+               flex        : 1,
+               renderer : renderTopic,
+               sortable    : true
+               
+            }));
+        
+         myfields.push(Ext.create('Ext.data.Field', {
+                name: 'Name',
+            }));
+             myfields.push(Ext.create('Ext.data.Field', {
+                name: 'Id',
+            }));
+        //iterate over selected fields    
+        selectedfields.forEach(function(item) {
+            
+            myfields.push(Ext.create('Ext.data.Field', {
+                name: item
+            }));
+            
+            myColumns.push(Ext.create('Ext.grid.Column',{
+               
+               text : item,
+               dataIndex   : item,
+               flex        : 1,
+               
+            }));
+            
+        });
+        
+
+    //defining model    
+    Ext.define('search__cModel',{
+            extend  : 'Ext.data.Model',
+                    fields  : myfields,
+            
+            
+            });
+            
+         var store1 = Ext.create('Ext.data.Store', { //Create a store, which is like collection of records with sorting and grouping capability
+                                    model       : 'search__cModel', //Associate your store with Model
+                                    pageSize    : 5,
+                                    proxy       : {
+                                                    type    : 'memory',
+                                                    reader  : {
+                                                        type : 'json',
+                                                    }
+                                                  }
+                                                  
+                                });
+        
+        
+           
+        
+        //var pluginExpanded = true;
+        
+        
+        
+        //calling method on controller side using javascript remoting                
+        DataCleanerController.getAllRecord( objname,QueryObj,selectedfields,function(result, er){ //This method is used to call our controller method
+                                           
+                              var res = Ext.decode(result);
+                              store1.loadData(res.Records);
+                                             
+                               }, {escape:false});
+                       
+       
+        
+        
+        //defining view 
+        Ext.define('Ext.search.searchPanel',
+           {
+                    extend      : 'Ext.grid.Panel',
+                    alias       : 'widget.searchpanel',
+                    name        : 'searchpanel',
+                    columnLines : true,
+                    autoScroll  : true,
+                    singleSelect: true,
+                    border      : true,
+                    store       : store1, //Associate with our store
+                    
+                    columns     : myColumns ,
+                    
+                    bbar: Ext.create('Ext.PagingToolbar', {             
+                                                                        store: store1,
+                                                                        displayInfo: true,
+                                                                        pageSize: 5,
+                                                                        displayMsg: 'Displaying topics {0} - {1} of {2}',
+                                                                        emptyMsg: "No topics to display",
+                                                                   
+                                                                            }),
+                   
+           
+           });
+        
+        //creating a object of Panel 
+        var searchpanel =  new Ext.create('Ext.search.searchPanel',{
+                                 
+                        renderTo :search1,
+                       }); 
+                       
+                        store1.loadPage(1);       
+    return false;  
+    };     
+       
+   var addConditionScript = function(){
+     addCondition();
+     return false;
+    
+   }
+</script>
+
+
+  
+  
+  <apex:form id="form1">
+  <apex:actionFunction name="findFields" reRender="sec2,sec3,sec4"/>
+  <apex:actionFunction name="addCondition" action="{!addFilter}" reRender="sec3,repeat"/>
+  <apex:pageBlock id="pg1">
+  <apex:pageBlockSection id="sec1">
+  <apex:outputText value="Select object"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  
+  <apex:selectList size="1"  id="sel1" value="{!selectedObject}" onchange="findFields()">
+  <apex:selectOptions value="{!allObj}" ></apex:selectOptions>
+  </apex:selectList>
+  
+   </apex:pageBlockSection>
+  
+   
+  <apex:pageBlockSection id="sec2" > 
+  <apex:outputText value="select Fields" rendered="{!objectSelceted}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <apex:selectList id="sel2" multiselect="true" size="4" rendered="{!objectSelceted}" value="{!selectedfields}"  onchange="selectfield(this);">
+  <apex:selectOptions value="{!allFields}" ></apex:selectOptions> 
+  </apex:selectList>
+  
+  </apex:pageBlockSection>
+  
+  <apex:pageBlockSection id="sec3" columns="4">
+   <apex:repeat value="{!conditions}" var="condition" id="repeat"  rendered="{!objectSelceted}">
+   <apex:selectList id="sel3"  size="1" value="{!condition.fieldName}" >
+   <apex:selectOptions value="{!allFields}" ></apex:selectOptions> 
+   </apex:selectList>
+   <apex:selectList id="sel4"  size="1" value="{!condition.condition}" >
+   <apex:selectOptions value="{!listConditon}" ></apex:selectOptions> 
+   </apex:selectList>
+   <apex:inputText value="{!condition.value}" id="checkvalue"  />
+   <apex:commandLink value="Remove" action="{!removeCondition}" reRender="sec3">
+   <apex:param value="{!condition.uId}" assignTo="{!removeId}" name="removeId"/>
+   </apex:commandLink>
+   </apex:repeat>
+   <apex:commandButton value="Add Filter" onclick=" return addConditionScript ();" rendered="{!objectSelceted}"/>
+  </apex:pageBlockSection>
+  
+  <apex:pageBlockSection id="sec4"> 
+  <apex:outputText value="No. Of Records" rendered="{!objectSelceted}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <apex:selectList id="sel5" multiselect="false" size="1" value="{!noOfRecord}" rendered="{!objectSelceted}">
+  <apex:selectOption itemLabel="500" itemValue="500" ></apex:selectOption> 
+  <apex:selectOption itemLabel="1000" itemValue="1000" ></apex:selectOption> 
+  <apex:selectOption itemLabel="5000" itemValue="5000" ></apex:selectOption> 
+  <apex:selectOption itemLabel="50000" itemValue="50000" ></apex:selectOption> 
+  </apex:selectList>
+  </apex:pageBlockSection>
+  
+  </apex:pageBlock>
+  <button onclick ="return searchSobject();" > Search</button>
+  </apex:form>
+  <div id= "search1"></div>
+</apex:page>

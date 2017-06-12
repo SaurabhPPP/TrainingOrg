@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Job</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Jobs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Contact No --></label>
+        <name>Contact_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer --></label>
+        <name>Customer__c</name>
+        <relationshipLabel><!-- Jobs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Job Description --></label>
+        <name>Job_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Job Summary --></label>
+        <name>Job_Summary__c</name>
+    </fields>
+    <fields>
+        <label><!-- Job Type --></label>
+        <name>Job_Type__c</name>
+        <picklistValues>
+            <masterLabel>Maintenance</masterLabel>
+            <translation><!-- Maintenance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Repair</masterLabel>
+            <translation><!-- Repair --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Manager Assigned --></label>
+        <name>Manager_Assigned__c</name>
+        <relationshipLabel><!-- Jobs --></relationshipLabel>
+    </fields>
+    <gender>Masculine</gender>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

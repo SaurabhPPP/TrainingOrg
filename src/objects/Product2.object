@@ -47,6 +47,19 @@
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
+        <fullName>DisplayUrl</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>ExternalDataSourceId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ExternalId</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
         <fullName>Family</fullName>
         <picklist>
             <picklistValues>
@@ -69,6 +82,18 @@
     <fields>
         <fullName>ProductCode</fullName>
         <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>QuantityUnitOfMeasure</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Chaque</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
     </fields>
     <listViews>
         <fullName>AllProducts</fullName>

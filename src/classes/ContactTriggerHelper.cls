@@ -84,4 +84,34 @@ public  class ContactTriggerHelper {
             }
         }
     }
+    
+    
+    
+    
+     //method to roll up Contact  Count on Account 
+     public static void RollupContactOnAccount(List<Contact> newContacts ,Map<Id,Contact> oldMap){
+     	List<Account> listAccountTobeUpdated = new List<Account>();
+     	Set<Id> setAccountId = new Set<Id>();
+     	for(Contact Contact : newContacts){
+     		if(Contact.AccountId != null|| (oldMap != Null && oldMap.containsKey(Contact.id) && OldMap.get(Contact.id).Accountid != Contact.AccountId && Contact.AccountId == null))
+     		setAccountId.add(Contact.AccountId != null?Contact.AccountId :OldMap.get(Contact.id).Accountid);
+     	}
+     	
+     	//Aggregagte query on Contact 
+        for(AggregateResult accountResult : [Select Count(Id) cnt, AccountId from Contact
+                                                where  AccountId In :setAccountId Group By AccountId]) {
+       
+            // Add Account record for update
+            listAccountTobeUpdated.add(
+                new Account(
+                    Id = String.valueOf(accountResult.get('AccountId')),
+                    Total_Contact__c = Integer.valueOf(accountResult.get('cnt'))
+                )
+            ); 
+         }
+         
+        if(!listAccountTobeUpdated.isEmpty()){
+        	Database.update(listAccountTobeUpdated,false);
+        } 
+      }
 }

@@ -1,0 +1,56 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="job" type="Job__c" />
+     default="{ 'sobjectType': 'Job__c',
+                    'Job_Summary__c': '',
+                    'Job_Description__c': '',
+                    'Job_Type__c': '' }"/>
+    
+    
+    
+    <!-- CREATE NEW Job FORM -->
+    <form class="slds-form--stacked">
+
+      <div class="slds-form-element slds-is-required">
+          <div class="slds-form-element__control">
+              <ui:inputText aura:id="jobSummary" label="Job Summary"
+                  class="slds-input"
+                  labelClass="slds-form-element__label"
+                  value="{!v.job.Job_Summary__c}"
+                  required="true"/>
+          </div>
+     </div>
+
+     <div class="slds-form-element slds-is-required">
+          <div class="slds-form-element__control">
+              <ui:inputNumber aura:id="description" label="Job Description"
+                  class="slds-input"
+                  labelClass="slds-form-element__label"
+                  value="{!v.job.Job_Description__c}"
+                  required="true"/>
+
+          </div>
+      </div>
+
+      <div class="slds-form-element">
+          <div class="slds-form-element__control">
+              <ui:inputCurrency aura:id="jobType" label="Job Type"
+                  class="slds-input"
+                  labelClass="slds-form-element__label"
+                  value="{!v.job.Job_Type__c}"
+                  />
+          </div>
+      </div>
+
+
+      <div class="slds-form-element">
+          <ui:button label="Create Job"
+              class="slds-button slds-button--brand"
+              press="{!c.createJob}"/>
+      </div>
+
+    </form>
+    <!-- / CREATE NEW ITEM FORM -->
+
+
+    
+</aura:component>

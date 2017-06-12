@@ -358,6 +358,81 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>Lead_City__c</fullName>
+        <externalId>false</externalId>
+        <label>Lead City</label>
+        <picklist>
+            <picklistValues>
+                <fullName>New York</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Dallas</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Las Angeles</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Las Vegas</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Chicago</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Washington DC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pune</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mumbai</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sacramento</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Lead_Priority__c</fullName>
+        <externalId>false</externalId>
+        <label>Lead Priority</label>
+        <picklist>
+            <picklistValues>
+                <fullName>P1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>P2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>P3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>P4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>MobilePhone</fullName>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
@@ -460,6 +535,18 @@
         <trackFeedHistory>false</trackFeedHistory>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Representative__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Sales Representative</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Leads</relationshipLabel>
+        <relationshipName>Leads</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Status</fullName>
@@ -715,6 +802,64 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Lead_City__c</picklist>
+            <values>
+                <fullName>Chicago</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dallas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Las Angeles</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Las Vegas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mumbai</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New York</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pune</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sacramento</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Washington DC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Lead_Priority__c</picklist>
+            <values>
+                <fullName>P1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P4</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Name</picklist>
             <values>
                 <fullName>Dr%2E</fullName>
@@ -935,6 +1080,64 @@
             </values>
             <values>
                 <fullName>Web</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Lead_City__c</picklist>
+            <values>
+                <fullName>Chicago</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dallas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Las Angeles</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Las Vegas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mumbai</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New York</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pune</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sacramento</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Washington DC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Lead_Priority__c</picklist>
+            <values>
+                <fullName>P1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P4</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1163,6 +1366,64 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Lead_City__c</picklist>
+            <values>
+                <fullName>Chicago</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dallas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Las Angeles</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Las Vegas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mumbai</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New York</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pune</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sacramento</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Washington DC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Lead_Priority__c</picklist>
+            <values>
+                <fullName>P1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P4</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Name</picklist>
             <values>
                 <fullName>Dr%2E</fullName>
@@ -1383,6 +1644,64 @@
             </values>
             <values>
                 <fullName>Web</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Lead_City__c</picklist>
+            <values>
+                <fullName>Chicago</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dallas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Las Angeles</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Las Vegas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mumbai</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New York</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pune</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sacramento</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Washington DC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Lead_Priority__c</picklist>
+            <values>
+                <fullName>P1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>P4</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

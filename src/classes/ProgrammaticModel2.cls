@@ -51,8 +51,8 @@ public class ProgrammaticModel2 {
         List<Account> listAccount2010Enrollment = [Select id ,Name from Account where Enrollment_Year__c ='2010'];
         System.debug(listAccount2010Enrollment);
         
-        List<Account> listAccount1314 = [Select id ,Enrollment_year__c from account where Enrollment_year__c ='2013;2014'];
-         System.debug(listAccount1314);
+        List<Account> listAccount1314 = [Select id ,Enrollment_year__c from account where Enrollment_year__c = '2013;2014'];
+        System.debug(listAccount1314);
         
     }
     
@@ -64,7 +64,7 @@ public class ProgrammaticModel2 {
 		10,000 records only. NOTE: do not use AND operator. 
 	    */
         
-        List<Account> listAccount = [Select Id ,Name From Account where BillingState not IN ('Maharashtra','Kerala') Order by BillingState desc Limit 10000];
+        List<Account> listAccount = [Select Id ,Name From Account where BillingState not IN ('Maharashtra','Kerala') Order by BillingState desc NULLS LAST Limit 10000 ];
         System.debug('listAccount'+listAccount);
       
         /* 6. Write a SOQL query to display 100 opportunity records with amount greater than 10,000 order by
@@ -81,10 +81,15 @@ public class ProgrammaticModel2 {
 			*this information in a map with key as year and value as sum of amount. Iterate this map to display
 			statistics
 		*/
-        List<AggregateResult> listOpportunityAggregate = [Select CALENDAR_YEAR(CloseDate) , Sum(amount) from Opportunity  where CloseDate = THIS_FISCAL_YEAR Group By CALENDAR_YEAR(CloseDate)];
-        System.debug('listOpportunityAggregate'+listOpportunityAggregate);
-        
-        
+        Map<String,Double> FiscalDateToSumOfAmount = new Map<String,Double>();
+          for(AggregateResult agg : [Select CALENDAR_YEAR(CloseDate) closeddate , Sum(amount) sumofamt from Opportunity  where CloseDate = THIS_FISCAL_YEAR Group By CALENDAR_YEAR(CloseDate)]){       	
+           FiscalDateToSumOfAmount.put(String.Valueof(agg.get('closeddate')),Double.valueOf(agg.get('sumofamt')));
+          }
+         //iterating the map as per requirement 
+          for(String ite_Date : FiscalDateToSumOfAmount.keySet()){
+            System.debug('CloseDate :'+ite_Date +'====>'+FiscalDateToSumOfAmount.get(ite_Date));
+          }
+               
         /*2. Find total number of distinct Lead records on basis of 'Lead Source' having greater than 10 leads.
 		Print this information
 		*/
@@ -96,13 +101,16 @@ public class ProgrammaticModel2 {
 			(Hint: map<string,map<string,integer>>)
         */
         Map<String ,Map<String,Integer>>  mapLeadSourceToMapStatusToLeadCount = new Map<String ,Map<String,Integer>>();
-        for(AggregateResult agg : [Select LeadSource ,Status ,COUNT(Id) from Lead Group By LeadSource, Status Having leadSource != '']){
-         
-            if(mapLeadSourceToMapStatusToLeadCount.containsKey(String.Valueof(agg.get('LeadSource')))){
-                mapLeadSourceToMapStatusToLeadCount.get(String.valueOf(agg.get('LeadSource'))).put(String.valueOf(agg.get('Status')) ,Integer.valueOf(agg.get('COUNT(Id)')));
+        for(AggregateResult agg : [Select LeadSource ,Status ,COUNT(Id) noofLeads from Lead Group By LeadSource, Status Having leadSource != '']){
+         	
+            String temp_leadSource  = String.Valueof(agg.get('LeadSource'));
+            String temp_leadStatus =  String.valueOf(agg.get('Status'));
+            Integer temp_leadCount =  Integer.valueOf(agg.get('noofLeads'));
+            if(mapLeadSourceToMapStatusToLeadCount.containsKey(temp_leadSource)){
+                mapLeadSourceToMapStatusToLeadCount.get(temp_leadSource).put(temp_leadStatus ,temp_leadCount);
             }
             else{
-                mapLeadSourceToMapStatusToLeadCount.put(String.valueOf(agg.get('LeadSource')) , new Map<String ,Integer>{String.valueOf(agg.get('Status')) => Integer.valueOf(agg.get('COUNT(Id)'))});
+                mapLeadSourceToMapStatusToLeadCount.put(temp_leadSource , new Map<String ,Integer>{temp_leadStatus => temp_leadCount});
             }
         }
         System.debug('mapLeadSourceToMapStatusToLeadCount '+mapLeadSourceToMapStatusToLeadCount);       
@@ -184,7 +192,7 @@ public class ProgrammaticModel2 {
      	}
      	
          Database.SaveResult[] saveResults = Database.insert(listLeadToBeInserted, False);
-         
+         	
          //Creating logs for error Leads 
          List<Logs__c> listLogsTobeInserted = new List<Logs__c>();
          for(Database.SaveResult sr : saveResults){
@@ -205,16 +213,10 @@ public class ProgrammaticModel2 {
 		3. Create a custom text field on the Asset object named 'Line Item Id' and mark it as an external id.
 	  */
 	  
-	  public static void inActiveAccount(){
+	  public static void deleteInActiveAccount(){
 	  	
-	  	List<Account> listAccountToBeInactivate = new List<Account>();
-	  	
-	  	for(Account acc : [Select Id ,Active__c from Account where createdDate = LAST_N_DAYS:90 ]){
-	  		acc.Active__c ='No';
-	  		listAccountToBeInactivate.add(acc);
-	  	}
-	  	
-	  	 update listAccountToBeInactivate;
+	  	Delete  [Select Id  from Account where createdDate = LAST_N_DAYS:90 and Active__c ='No'];  	
+	  
 	  }	
       		
 }

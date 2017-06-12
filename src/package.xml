@@ -71,6 +71,7 @@
         <members>AccountContactRole</members>
         <members>Activity</members>
         <members>Asset</members>
+        <members>AssetRelationship</members>
         <members>AssistantProgress</members>
         <members>Campaign</members>
         <members>CampaignMember</members>
@@ -82,6 +83,7 @@
         <members>Contract</members>
         <members>ContractContactRole</members>
         <members>DandBCompany</members>
+        <members>Demo__mdt</members>
         <members>DuplicateRecordItem</members>
         <members>DuplicateRecordSet</members>
         <members>EmailMessage</members>
@@ -218,6 +220,7 @@
     </types>
     <types>
         <members>unfiled$public</members>
+        <members>unfiled$public/Telecalling_Campaign_Report</members>
         <name>Report</name>
     </types>
     <types>
@@ -251,6 +254,10 @@
     <types>
         <members>*</members>
         <name>StaticResource</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Translations</name>
     </types>
     <types>
         <members>*</members>

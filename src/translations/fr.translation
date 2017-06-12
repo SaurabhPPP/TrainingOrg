@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Translations xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customApplications>
+        <label><!-- Payroll System --></label>
+        <name>Payroll_System</name>
+    </customApplications>
+    <customLabels>
+        <label>Ville</label>
+        <name>City</name>
+    </customLabels>
+    <customLabels>
+        <label>Pays</label>
+        <name>Country</name>
+    </customLabels>
+    <customLabels>
+        <label>Cours</label>
+        <name>Course</name>
+    </customLabels>
+    <customLabels>
+        <label>Le genre</label>
+        <name>Gender</name>
+    </customLabels>
+    <customLabels>
+        <label>HSC%</label>
+        <name>HSC</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- LeadDublicateField --></label>
+        <name>LeadDublicateField</name>
+    </customLabels>
+    <customLabels>
+        <label>Numéro de rôle</label>
+        <name>Roll_Number</name>
+    </customLabels>
+    <customLabels>
+        <label>SSC%</label>
+        <name>SSC</name>
+    </customLabels>
+    <customLabels>
+        <label>Etat</label>
+        <name>State</name>
+    </customLabels>
+    <customLabels>
+        <label>Formulaire d&apos;inscription</label>
+        <name>Student_Form</name>
+    </customLabels>
+    <customLabels>
+        <label>Nom d&apos;étudiant</label>
+        <name>Student_Name</name>
+    </customLabels>
+    <customLabels>
+        <label>Soumettre</label>
+        <name>Submit</name>
+    </customLabels>
+    <customLabels>
+        <label>Votre demande d&apos;admission a été soumise avec succès:</label>
+        <name>Success_Message</name>
+    </customLabels>
+    <globalPicklists>
+        <name>Course</name>
+        <picklistValues>
+            <masterLabel>B.Arch</masterLabel>
+            <translation><!-- B.Arch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B.C.A</masterLabel>
+            <translation><!-- B.C.A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B.E</masterLabel>
+            <translation><!-- B.E --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>M.C.A</masterLabel>
+            <translation><!-- M.C.A --></translation>
+        </picklistValues>
+    </globalPicklists>
+    <quickActions>
+        <label><!-- LogACall --></label>
+        <name>LogACall</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewAccount --></label>
+        <name>NewAccount</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewCase --></label>
+        <name>NewCase</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewContact --></label>
+        <name>NewContact</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewEvent --></label>
+        <name>NewEvent</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewGroup --></label>
+        <name>NewGroup</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewLead --></label>
+        <name>NewLead</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewNote --></label>
+        <name>NewNote</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewOpportunity --></label>
+        <name>NewOpportunity</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewTask --></label>
+        <name>NewTask</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- SendEmail --></label>
+        <name>SendEmail</name>
+    </quickActions>
+</Translations>

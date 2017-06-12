@@ -59,7 +59,7 @@ public  class TestDataFactory {
 	        Integer asize = accts.isEmpty()?1 :accts.size();
 	        for (Integer j=0;j<asize;j++) {
 	            Account acct = accts.isEmpty() ? new Account() :accts[j];
-	            // For each account just inserted, add opportunities
+	            
 	            for (Integer k=0;k<numOfContact;k++) {
 	                contacts.add(new Contact(FirstName = 'Contact'+k,
 										   LastName = 'Name'+k,
@@ -82,7 +82,7 @@ public  class TestDataFactory {
 	        for (Integer j=0;j<asize;j++) {
 	            Account acct = accts.isEmpty() ? new Account() :accts[j];
 	            Contact con = contacts.isEmpty() && contacts.size()<=j ?new Contact() :contacts[j];
-	            // For each account just inserted, add opportunities
+	           
 	            for (Integer k=0;k<numOfCase;k++) {
 	                cases.add( new Case( ContactId = con.id,
 									    AccountId = acct.Id,
@@ -90,7 +90,7 @@ public  class TestDataFactory {
 									    Origin = 'Phone'));
 	            }
 	        }
-	        // Insert all Contacts for all accounts.
+	        // Insert all Cases 
 	        insert cases;
 	        
 	        return cases;
@@ -114,6 +114,11 @@ public  class TestDataFactory {
              user1.Alias = 'acqman';
              user1.Phone = '4545454544';
              user1.IsActive = true;
+             user1.email = Math.random()*10 +'@test1.com';
+             user1.localesidkey='en_US';
+			 user1.emailencodingkey='UTF-8';
+             user1.languagelocalekey='en_US';
+             user1.TimeZoneSidKey = 'America/New_York';
        
         insert user1;
         return user1;

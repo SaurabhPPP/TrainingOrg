@@ -548,6 +548,28 @@
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
+        <fullName>Total_Case__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Case</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Contact__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Contact</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Tradestyle</fullName>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
